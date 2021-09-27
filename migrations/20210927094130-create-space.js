@@ -17,13 +17,11 @@ module.exports = {
       },
       backgroundColor: {
         type: Sequelize.STRING,
+        defaultValue: "#ffffff",
       },
       color: {
         type: Sequelize.STRING,
-      },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
+        defaultValue: "#000000",
       },
       createdAt: {
         allowNull: false,
