@@ -73,6 +73,27 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+router.post("/myspace", async (req, res, next) => {
+  try {
+    const { name, content, imageurl, spaceId } = req.body.newPost;
+    if (!name) {
+      return res.status(400).send("Bro whats good, was yo story name");
+    } else {
+      const newStory = await Story.create({
+        name,
+        content,
+        imageurl,
+        spaceId,
+      });
+      console.log(newStory);
+      res.send(newStory);
+    }
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
+
 // The /me endpoint can be used to:
 // - get the users email & name using only their token
 // - checking if a token is (still) valid
